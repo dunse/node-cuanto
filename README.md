@@ -1,6 +1,7 @@
 # node-cuanto
 
-Client library for [Cuanto](http://www.trackyourtests.com/).
+Client library for [Cuanto](http://www.trackyourtests.com/),
+based on [Cuanto JSON API](http://docs.codehaus.org/display/CUANTO/Cuanto+JSON+API).
 
 [![NPM](https://nodei.co/npm/cuanto.png)](https://nodei.co/npm/cuanto/)
 
@@ -8,11 +9,11 @@ Client library for [Cuanto](http://www.trackyourtests.com/).
 ```javascript
 var cuanto = require('cuanto')('http://your.server/cuanto');
 var project = new cuanto.type.Project('MyProject', 'MYP');
-cuanto.project.create(project, function(err, res) {
+cuanto.project.add(project, function(err, res) {
   if (err) { /* Error */ }
+  var testRun = new cuanto.type.TestRun(project.projectKey, new Date());
   cuanto.testRun.add(testRun, function(err, res) {
     if (err) { /* Error */ }
-    var testRun = new cuanto.type.TestRun(project.projectKey, new Date());
     console.log(res.id); // TestRun's Id
   });
 });

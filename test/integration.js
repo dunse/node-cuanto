@@ -105,6 +105,14 @@ describe('cuanto', function() {
       });
     });
 
+    it('is possible to get all test runs from projectKey', function(done) {
+      cuanto.project.getAllTestRuns(project.projectKey, function(err, res) {
+        should.not.exist(err);
+        assets.project.should.equal(res[0].project.name);
+        done();
+      });
+    });
+
     it('is possible to remove testRun', function(done) {
       cuanto.testRun.remove(testRunId, function(err, res) {
         should.not.exist(err);
@@ -182,10 +190,20 @@ describe('cuanto', function() {
         should.exist(res.id);
         cuanto.testOutcome.getTestOutput(res.id, function(err, res) {
           should.not.exist(err);
-          assets.testOutput.should.equal(res);
+          testCase.packageName.should.equal(res[0].testCase.packageName);
+          testCase.testName.should.equal(res[0].testCase.testName);
           done();
         });
       });
     });
+
+    it('is possible to get all outcomes from testRun', function(done) {
+      cuanto.testRun.getTestOutcomes(testRun.id, function(err, res) {
+        should.not.exist(err);
+        assets.project.should.equal(res[0].project.name);
+        done();
+      });
+    });
+
   });
 });

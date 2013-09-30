@@ -126,6 +126,14 @@ describe('cuanto', function() {
         done();
       });
     });
+
+    it('is possible to get all empty array from getAllTestRuns', function(done) {
+      cuanto.project.getAllTestRuns(project.projectKey, function(err, res) {
+        should.not.exist(err);
+        res.length.should.equal(0);
+        done();
+      });
+    });
   });
 
   describe('testOutcome', function() {
@@ -147,6 +155,14 @@ describe('cuanto', function() {
     after(function(done) {
       cuanto.project.remove(project.projectKey, function(err, res) {
         should.not.exist(err);
+        done();
+      });
+    });
+
+    it('is possible to get empty array of outcomes from testRun', function(done) {
+      cuanto.testRun.getTestOutcomes(testRun.id, function(err, res) {
+        should.not.exist(err);
+        res.length.should.equal(0);
         done();
       });
     });
@@ -190,8 +206,7 @@ describe('cuanto', function() {
         should.exist(res.id);
         cuanto.testOutcome.getTestOutput(res.id, function(err, res) {
           should.not.exist(err);
-          testCase.packageName.should.equal(res[0].testCase.packageName);
-          testCase.testName.should.equal(res[0].testCase.testName);
+          outcome.testOutput.should.equal(res);
           done();
         });
       });
@@ -200,7 +215,7 @@ describe('cuanto', function() {
     it('is possible to get all outcomes from testRun', function(done) {
       cuanto.testRun.getTestOutcomes(testRun.id, function(err, res) {
         should.not.exist(err);
-        assets.project.should.equal(res[0].project.name);
+        assets.project.should.equal(res[0].testRun.project.name);
         done();
       });
     });

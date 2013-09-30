@@ -68,6 +68,7 @@ cuanto.project.exists(projectKey, function(err, Boolean) {});
 cuanto.project.get(projectKey, function(err, ProjectJSON) {});
 cuanto.project.add(Project, function(err, ProjectJSON) {});
 cuanto.project.remove(projectKey, function(err) {});
+cuanto.project.getAllTestRuns(projectKey, function(err, testRuns) {});
 ```
 
 #### TestRun
@@ -75,6 +76,8 @@ cuanto.project.remove(projectKey, function(err) {});
 cuanto.testRun.get(testRunId, function(err, TestRunJSON) {});
 cuanto.testRun.add(TestRun, function(err, TestRunJSON) {});
 cuanto.testRun.remove(testRunId, function(err) {});
+cuanto.testRun.getTestOutcomes(testRunId, [opts,] function(err, testOutcomes) {});
+  Valid opts are: sort, order, max and offset
 ```
 
 #### TestOutcome

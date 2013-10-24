@@ -54,6 +54,15 @@ describe('cuanto', function() {
       });
     });
 
+    it('is possible to list projects', function(done) {
+      cuanto.project.list(function(err, res) {
+        should.not.exist(err);
+        should.exist(res);
+        res.should.have.property('length').and.above(0);
+        done();
+      });
+    });
+
     it('is possible to remove project', function(done) {
       cuanto.project.remove(project.projectKey, function(err, res) {
         should.not.exist(err);

@@ -68,6 +68,7 @@ cuanto.project.exists(projectKey, function(err, Boolean) {});
 cuanto.project.get(projectKey, function(err, ProjectJSON) {});
 cuanto.project.add(Project, function(err, ProjectJSON) {});
 cuanto.project.remove(projectKey, function(err) {});
+cuanto.project.list(function(err, projects) {});
 cuanto.project.getAllTestRuns(projectKey, function(err, testRuns) {});
 ```
 

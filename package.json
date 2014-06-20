@@ -1,6 +1,6 @@
 {
   "name": "cuanto",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Node.js client for Cuanto",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "mocha": "x",
-    "should": "x"
+    "chai": "~1.9.0",
+    "sinon-chai": "~2.5.0",
+    "sinon": "x"
   }
 }
